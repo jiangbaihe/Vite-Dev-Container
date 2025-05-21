@@ -19,8 +19,13 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # 创建 nginx 服务目录
 RUN mkdir -p /usr/share/nginx/html
 
+# 创建启动脚本
+RUN echo '#!/bin/bash\nnginx\nexec "$@"' > /docker-entrypoint.sh && \
+    chmod +x /docker-entrypoint.sh
+
 # 暴露端口
 EXPOSE 80
 
-# 启动 nginx
-CMD ["nginx", "-g", "daemon off;"] 
+# 设置入口点
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["bash"] 

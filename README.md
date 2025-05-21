@@ -5,5 +5,5 @@
 ## 使用
 
 ```bash
-docker run --rm -it --name vite-dev-container -p 3000:3000 -v $(pwd):/app vite-dev-container bash
+docker run --rm -it --name vite-dev-container -p 80:80 ghcr.io/jiangbaihe/vite-dev-container
 ```
